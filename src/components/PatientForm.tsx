@@ -1,14 +1,16 @@
 import {useForm} from 'react-hook-form'
 import ErrorInfo from './ErrorInfo'
+import { DraftPatient} from '../types'
 
 
 export default function PatientForm() {
-    const {register, handleSubmit, formState : {errors}} = useForm()
 
-    const registerPatient = () => {
-        console.log('Paciente registrado')
+    const {register, handleSubmit, formState : {errors}} = useForm<DraftPatient>()
+
+    const registerPatient = (data : DraftPatient) => {
+        console.log(data)
     }
-
+   
     return (
       <div className="md:w-1/2 lg:w-2/5 mx-5">
           <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
@@ -40,7 +42,7 @@ export default function PatientForm() {
                    
                     {
                     errors.name && (
-                        <ErrorInfo>{errors.name?.message?.toString()}</ErrorInfo>
+                        <ErrorInfo>{errors.name?.message}</ErrorInfo>
                     )}
                 </div>
   
@@ -61,7 +63,7 @@ export default function PatientForm() {
                 </div>
                     {
                     errors.caretaker && (
-                        <ErrorInfo>{errors.caretaker?.message?.toString()}</ErrorInfo>
+                        <ErrorInfo>{errors.caretaker?.message}</ErrorInfo>
                     )
                     }
   
@@ -86,7 +88,7 @@ export default function PatientForm() {
 
               {
                 errors.email && (
-                    <ErrorInfo>{errors.email?.message?.toString()}</ErrorInfo>
+                    <ErrorInfo>{errors.email?.message}</ErrorInfo>
                 )
               }
   
@@ -106,7 +108,7 @@ export default function PatientForm() {
 
               {
               errors.date && (
-                <ErrorInfo>{errors.date?.message?.toString()}</ErrorInfo>
+                <ErrorInfo>{errors.date?.message}</ErrorInfo>
               )
               }
               
@@ -125,7 +127,7 @@ export default function PatientForm() {
               </div>
                     {
                         errors.symptoms && (
-                            <ErrorInfo>{errors.symptoms.message?.toString()}</ErrorInfo>
+                            <ErrorInfo>{errors.symptoms.message}</ErrorInfo>
                         )
                     }
               <input
