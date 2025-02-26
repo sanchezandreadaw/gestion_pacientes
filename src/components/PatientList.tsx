@@ -2,7 +2,6 @@ import { usePatientStore } from "../store/store"
 import PatientDetails from "./PatientDetails"
 
 export default function PatientList() {
-    //Extraemos los pacientes para poder listarlos posteriormente
     const patients = usePatientStore(state => state.patients)
     return (
         <div className="md:w-1/2 lg:3/5 md:h-screen overflow-y-scroll">
